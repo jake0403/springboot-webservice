@@ -13,6 +13,25 @@ before_install:
     - chmod +x ./gradlew
 script: "./gradlew build"
 
+before_deploy:
+    # 현재 위치의 모든 파일을 스프링 부트 웹 서비스 이름으로 압축
+    - zip -r springboot-webservice *
+    # Travis CI가 실행되는 위치에 deploy 디렉터리를 생성
+    - mkdir -p deploy
+    #압축 파일을 deploy 디렉터리로 이동
+    - mv springboot-webservice.zip deploy/springboot-webservice.zip
+
+deploy:
+    - provider: s3
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key: $ACCESS_SECRET_KEY
+      bucket: a2student5-springboot-webservice
+      region: ap-northeast-2
+      skip_cleanup: true
+      acl: private
+      local_dir: deploy
+      wait-until-deployed: true
+
 notification:
     email:
         recipients:
