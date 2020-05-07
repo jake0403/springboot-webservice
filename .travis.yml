@@ -1,0 +1,19 @@
+language: java
+jdk:
+    - openjdk8
+branch:
+    only:
+        -master
+        
+cache:
+    directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+before_install:
+    -chmod +x ./gradlew
+script: "./gradlew build"
+
+notification:
+    email:
+        recipients:
+            - jake0403@naver.com
