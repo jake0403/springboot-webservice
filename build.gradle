@@ -28,6 +28,7 @@ dependencies {
     testCompile 'org.springframework.security:spring-security-test'
     
     annotationProcessor 'org.projectlombok:lombok'
+    compile 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 
