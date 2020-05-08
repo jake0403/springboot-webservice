@@ -25,8 +25,8 @@ deploy:
     - provider: s3
       access_key_id: $AWS_ACCESS_KEY
       secret_access_key: $ACCESS_SECRET_KEY
-      bucket: a2student5-springboot-webservice
-      region: ap-northeast-2
+      bucket: a2student5-springboot-webservice1
+      region: eu-west-2
       skip_cleanup: true
       acl: private
       local_dir: deploy
@@ -35,7 +35,7 @@ deploy:
     - provider: codedeploy
       access_key_id: $AWS_ACCESS_KEY
       secret_access_key: $ACCESS_SECRET_KEY
-      bucket: a2student5-springboot-webservice
+      bucket: a2student5-springboot-webservice1
       key: springboot-webservice.zip
       bundle_type: zip
       application: springboot-webservice     # AWS 콘솔에서 등록한 CodeDeploy 애플리케이션
