@@ -35,12 +35,14 @@ deploy:
     - provider: codedeploy
       access_key_id: $AWS_ACCESS_KEY
       secret_access_key: $ACCESS_SECRET_KEY
-      bucket: a2student5-springboot-webservice           #AWS 콘솔에서 등록한 codedeploy 애플리케이션
-      key: springboot-webservice.zip                     #AWS 콘솔에서 등록한 codedeploy 배포 그룹
+      bucket: a2student5-springboot-webservice
+      key: springboot-webservice.zip
       bundle_type: zip
-      application: springboot-webservice-group
+      application: springboot-webservice     # AWS 콘솔에서 등록한 CodeDeploy 애플리케이션
+      deployment_group: springboot-webservice-group             #  CodeDeploy 배포 그룹
       region: eu-west-2
-      wait-until-deployed: true
+      wait-until-deployed: true   
+
 
 notification:
     email:
