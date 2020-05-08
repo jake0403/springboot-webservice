@@ -15,11 +15,20 @@ script: "./gradlew build"
 
 before_deploy:
     # 현재 위치의 모든 파일을 스프링 부트 웹 서비스 이름으로 압축
-    - zip -r springboot-webservice *
+    #- zip -r springboot-webservice *
     # Travis CI가 실행되는 위치에 deploy 디렉터리를 생성
-    - mkdir -p deploy
+    #- mkdir -p deploy
     #압축 파일을 deploy 디렉터리로 이동
-    - mv springboot-webservice.zip deploy/springboot-webservice.zip
+    #- mv springboot-webservice.zip deploy/springboot-webservice.zip
+    - mkdir -p before-deploy
+    - cp scripts/*.sh before-deploy/
+    - cp appspec.yml before-deploy/
+    - cp build/libs/*.war before-deploy/
+    
+    - cd before-deploy && zip -r before-deploy *
+    
+    - cd .. && mkdir -p deploy
+    - mv before-deploy/before-deploy.zip deploy/springboot-webservice.zip
 
 deploy:
     - provider: s3
