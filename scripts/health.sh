@@ -7,7 +7,7 @@ source ${ABSDIR}/switch.sh
 
 IDLE_PORT=$(find_idle_port)
 
-echo "> Health Check Start !!"
+echo "> Health Check Start !!!"
 echo "> IDLE_PORT : $IDLE_PORT"
 echo "> curl -s http://localhost:$IDLE_PORT/profile"
 sleep 10
@@ -30,7 +30,7 @@ do
 	if [ ${RETRY_COUNT} -eq 10 ]
 	then 
 		echo "> Health Check 실패"
-		echo "> Nginx에 연결하지 않고 배포를 종료합니다."
+		echo "> 엔진엑스에 연결하지 않고 배포를 종료합니다."
 		exit 1
 	fi
 	
